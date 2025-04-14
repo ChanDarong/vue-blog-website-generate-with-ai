@@ -6,6 +6,7 @@ export default function useCategory() {
 
   const fetchCategories = async () => {
     try {
+      // Use relative URL that will be handled by the proxy
       const response = await axios.get('/api/api/v1/categories');
       categories.value = response.data;
     } catch (error) {
