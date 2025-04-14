@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="max-w-3xl mx-auto mb-12">
+    <div class="max-w-3xl mb-12">
       <h1 class="text-3xl font-bold text-gray-800 mb-4">All Articles</h1>
       <p class="text-gray-600">
         Browse our collection of Laravel tutorials, tips, and best practices
@@ -10,13 +10,20 @@
     <div class="mb-8">
       <div class="flex flex-wrap gap-3">
         <button
-          v-for="category in categories"
-          :key="category"
-          @click="filterByCategory(category)"
+          @click="filterByCategory('All')"
           class="px-4 py-2 rounded-full text-sm transition-colors"
-          :class="selectedCategory === category ? 'bg-red-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+          :class="selectedCategory === 'All' ? 'bg-red-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
         >
-          {{ category }}
+          All
+        </button>
+        <button
+          v-for="category in categories"
+          :key="category.name"
+          @click="filterByCategory(category.name)"
+          class="px-4 py-2 rounded-full text-sm transition-colors"
+          :class="selectedCategory === category.name ? 'bg-red-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+        >
+          {{ category.name }}
         </button>
       </div>
     </div>
@@ -45,11 +52,18 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import BlogCard from '../components/BlogCard.vue';
+import useCategory from '../composables/category.js';
 
 const selectedCategory = ref('All');
-const categories = ['All', 'Basics', 'Advanced', 'APIs', 'Database', 'Testing'];
+// const categories = ['All', 'Basics', 'Advanced', 'APIs', 'Database', 'Testing'];
+
+const { categories, fetchCategories } = useCategory();
+
+onMounted(() => {
+  fetchCategories();
+});
 
 const allBlogs = [
   {
