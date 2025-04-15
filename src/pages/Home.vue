@@ -23,7 +23,7 @@
         <h2 class="text-2xl font-bold text-gray-800 mb-8">Featured Articles</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <router-link
-            v-for="blog in featuredBlogs"
+            v-for="blog in posts"
             :key="blog.id"
             :to="`/blog/${blog.id}`"
             class="block"
@@ -69,49 +69,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import BlogCard from '../components/BlogCard.vue';
+import usePost from '@/composables/post';
 
 const email = ref('');
+const { posts, getPosts } = usePost();
 
-const featuredBlogs = [
-  {
-    id: 1,
-    title: 'Getting Started with Laravel 10',
-    excerpt: 'Learn how to set up your first Laravel project and understand the basic concepts.',
-    image: 'https://picsum.photos/id/0/800/600',
-    date: '2023-09-15',
-    readTime: 5,
-    author: {
-      name: 'John Doe',
-      avatar: 'https://randomuser.me/api/portraits/men/32.jpg'
-    }
-  },
-  {
-    id: 2,
-    title: 'Building APIs with Laravel Sanctum',
-    excerpt: 'A comprehensive guide to creating secure APIs using Laravel Sanctum authentication.',
-    image: 'https://picsum.photos/id/1/800/600',
-    date: '2023-09-10',
-    readTime: 8,
-    author: {
-      name: 'Jane Smith',
-      avatar: 'https://randomuser.me/api/portraits/women/44.jpg'
-    }
-  },
-  {
-    id: 3,
-    title: 'Laravel Eloquent Relationships Explained',
-    excerpt: 'Master the different types of Eloquent relationships and when to use them.',
-    image: 'https://picsum.photos/id/2/800/600',
-    date: '2023-09-05',
-    readTime: 10,
-    author: {
-      name: 'Mike Johnson',
-      avatar: 'https://randomuser.me/api/portraits/men/86.jpg'
-    }
-  }
-];
+onMounted(() => {
+  getPosts('', 1);
+});
 
 const subscribeNewsletter = () => {
   alert(`Thank you for subscribing with ${email.value}!`);

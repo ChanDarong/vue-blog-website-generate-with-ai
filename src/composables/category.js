@@ -4,7 +4,7 @@ import axios from "axios";
 export default function useCategory() {
   const categories = ref([]);
 
-  const fetchCategories = async () => {
+  const getCategories = async () => {
     try {
       // Use relative URL that will be handled by the proxy
       const response = await axios.get('/api/api/v1/categories');
@@ -16,6 +16,6 @@ export default function useCategory() {
 
   return {
     categories,
-    fetchCategories
+    getCategories
   }
 }

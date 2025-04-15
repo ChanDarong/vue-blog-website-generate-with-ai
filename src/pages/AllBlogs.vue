@@ -18,10 +18,10 @@
         </button>
         <button
           v-for="category in categories"
-          :key="category.name"
-          @click="filterByCategory(category.name)"
+          :key="category.id"
+          @click="filterByCategory(category.id)"
           class="px-4 py-2 rounded-full text-sm transition-colors"
-          :class="selectedCategory === category.name ? 'bg-red-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+          :class="selectedCategory === category.id ? 'bg-red-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
         >
           {{ category.name }}
         </button>
@@ -30,7 +30,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <router-link
-        v-for="blog in filteredBlogs"
+        v-for="blog in posts"
         :key="blog.id"
         :to="`/blog/${blog.id}`"
         class="block"
@@ -39,7 +39,7 @@
       </router-link>
     </div>
 
-    <div v-if="filteredBlogs.length === 0" class="text-center py-12">
+    <div v-if="posts.length === 0" class="text-center py-12">
       <p class="text-gray-500 text-lg">No articles found for the selected category.</p>
       <button
         @click="selectedCategory = 'All'"
@@ -55,14 +55,17 @@
 import { ref, computed, onMounted } from 'vue';
 import BlogCard from '../components/BlogCard.vue';
 import useCategory from '../composables/category.js';
+import usePost from '../composables/post';
 
 const selectedCategory = ref('All');
 // const categories = ['All', 'Basics', 'Advanced', 'APIs', 'Database', 'Testing'];
 
-const { categories, fetchCategories } = useCategory();
+const { categories, getCategories } = useCategory();
+const { posts, getPosts } = usePost();
 
 onMounted(() => {
-  fetchCategories();
+  getCategories();
+  getPosts();
 });
 
 const allBlogs = [
@@ -146,14 +149,12 @@ const allBlogs = [
   }
 ];
 
-const filteredBlogs = computed(() => {
-  if (selectedCategory.value === 'All') {
-    return allBlogs;
-  }
-  return allBlogs.filter(blog => blog.category === selectedCategory.value);
-});
-
 const filterByCategory = (category) => {
   selectedCategory.value = category;
+  if (category != 'All') {
+    getPosts(category);
+  } else {
+    getPosts('');
+  }
 };
 </script>
