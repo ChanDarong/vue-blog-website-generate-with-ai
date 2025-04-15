@@ -25,7 +25,7 @@
           <router-link
             v-for="blog in posts"
             :key="blog.id"
-            :to="`/blog/${blog.id}`"
+            :to="`/blog/${blog.slug}`"
             class="block"
           >
             <BlogCard :blog="blog" />

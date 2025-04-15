@@ -6,7 +6,7 @@ export default function usePost() {
 
   const getPosts = async (category = '', isFeatured = 0) => {
     try {
-      const response = await axios.get('/api/api/v1/posts', {
+      const response = await axios.get('/api/posts', {
         params: {
           withCategory: true,
           withAuthor: true,

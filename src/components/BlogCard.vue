@@ -3,7 +3,7 @@
     <img :src="blog.imageUrl" :alt="blog.title" class="w-full h-48 object-cover" />
     <div class="p-5">
       <div class="flex items-center text-sm text-gray-500 mb-2">
-        <span>{{ formatDate(blog.date) }}</span>
+        <span>{{ formatDate(blog.createdAt) }}</span>
         <span class="mx-2">•</span>
         <span>{{ blog.readTime }} min read</span>
       </div>
