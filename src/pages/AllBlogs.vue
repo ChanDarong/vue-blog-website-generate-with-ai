@@ -31,8 +31,8 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <router-link
         v-for="blog in posts"
-        :key="blog.id"
-        :to="`/blog/${blog.id}`"
+        :key="blog.slug"
+        :to="`/blog/${blog.slug}`"
         class="block"
       >
         <BlogCard :blog="blog" />
