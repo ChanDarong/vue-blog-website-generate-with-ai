@@ -1,5 +1,9 @@
 <template>
-  <div v-if="post">
+  <div v-if="loading" class="text-center py-32">
+    <Spinner/>
+    <p class="text-center text-gray-500">Loading article...</p>
+  </div>
+  <div v-else>
     <div class="max-w-3xl mx-auto">
       <!-- Blog Header -->
       <div class="mb-8">
@@ -51,9 +55,7 @@
       </div>
     </div>
   </div>
-  <div v-else class="text-center py-12">
-    <p class="text-gray-500 text-lg">Loading article...</p>
-  </div>
+
 </template>
 
 <script setup>
@@ -61,17 +63,24 @@ import { ref, onMounted, computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { marked } from 'marked';
 import BlogCard from '../components/BlogCard.vue';
+import Spinner from '@/components/Spinner.vue';
 import usePost from '@/composables/post';
 
 const route = useRoute();
 const blog = ref(null);
+const loading = ref(true);
 const { posts, post, getPostBySlug, getPosts } = usePost();
 
 // Function to load post data and related posts
 async function loadPostData() {
-  await getPostBySlug(route.params.slug);
-  if (post.value?.category) {
-    await getPosts(post.value.category.id);
+  try {
+    loading.value = true;
+    await getPostBySlug(route.params.slug);
+    if (post.value?.category) {
+      await getPosts(post.value.category.id);
+    }
+  } finally {
+    loading.value = false;
   }
 }
 
@@ -99,7 +108,7 @@ const parsedContent = computed(() => {
 
 const relatedBlogs = computed(() => {
   if (!post.value || !posts.value) return [];
-  console.log(posts.value);
+  // Return filter out the current post
   return posts.value.filter(p => p.id !== post.value.id);
 });
 
