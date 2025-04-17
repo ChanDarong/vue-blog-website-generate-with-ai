@@ -2,7 +2,17 @@ import { ref } from 'vue';
 import axios from "axios";
 
 export default function useCategory() {
+  const category = ref();
   const categories = ref([]);
+
+  const getCategory = async (id) => {
+    try {
+      const response = await axios.get(`/api/categories/${id}`);
+      category.value = response.data;
+    } catch (error) {
+      console.error('Error fetching a category:', error);
+    }
+  }
 
   const getCategories = async () => {
     try {
@@ -15,7 +25,9 @@ export default function useCategory() {
   }
 
   return {
+    category,
     categories,
+    getCategory,
     getCategories
   }
 }

@@ -14,6 +14,6 @@ import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
 
 onMounted(() => {
-  document.title = 'Laravel Dev Blog';
+  document.title = import.meta.env.VITE_APP_NAME;
 });
 </script>

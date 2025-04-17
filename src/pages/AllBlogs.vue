@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="max-w-3xl mb-12">
-      <h1 class="text-3xl font-bold text-gray-800 mb-4">All Articles</h1>
+      <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ selectedCategory.name }}</h1>
       <p class="text-gray-600">
-        Browse our collection of Laravel tutorials, tips, and best practices
+        {{ selectedCategory.description }}
       </p>
     </div>
 
@@ -12,7 +12,7 @@
         <button
           @click="filterByCategory('All')"
           class="px-4 py-2 rounded-full text-sm transition-colors cursor-pointer"
-          :class="selectedCategory === 'All' ? 'bg-red-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+          :class="selectedCategoryId === 'All' ? 'bg-red-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
         >
           All
         </button>
@@ -21,7 +21,7 @@
           :key="category.id"
           @click="filterByCategory(category.id)"
           class="px-4 py-2 rounded-full text-sm transition-colors cursor-pointer"
-          :class="selectedCategory === category.id ? 'bg-red-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+          :class="selectedCategoryId === category.id ? 'bg-red-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
         >
           {{ category.name }}
         </button>
@@ -36,13 +36,13 @@
       <div v-if="posts.length === 0" class="text-center py-12">
         <p class="text-gray-500 text-lg">No articles found for the selected category.</p>
         <button
-          @click="selectedCategory = 'All'"
+          @click="selectedCategoryId = 'All'"
           class="mt-4 text-red-500 hover:text-red-600 font-medium"
         >
           View all articles
         </button>
       </div>
-      <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         <router-link
           v-for="blog in posts"
           :key="blog.slug"
@@ -63,11 +63,21 @@ import Spinner from '@/components/Spinner.vue';
 import useCategory from '../composables/category.js';
 import usePost from '../composables/post';
 
-const selectedCategory = ref('All');
+const selectedCategoryId = ref('All');
 const loading = ref(true);
-
-const { categories, getCategories } = useCategory();
+const { category, categories, getCategory, getCategories } = useCategory();
 const { posts, getPosts } = usePost();
+
+// Create a computed property to handle the displayed category
+const selectedCategory = computed(() => {
+  if (selectedCategoryId.value === 'All') {
+    return {
+      name: 'All Articles',
+      description: 'Browse our collection of Laravel tutorials, tips, and best practices'
+    };
+  }
+  return category.value || { name: 'Loading...', description: '' };
+});
 
 onMounted(async () => {
   try {
@@ -78,12 +88,13 @@ onMounted(async () => {
   }
 });
 
-const filterByCategory = async (category) => {
-  selectedCategory.value = category;
+const filterByCategory = async (category_id) => {
+  selectedCategoryId.value = category_id;
   try {
     loading.value = true;
-    if (category != 'All') {
-      await getPosts(category);
+    if (category_id != 'All') {
+      await getCategory(category_id);
+      await getPosts(category_id);
     } else {
       await getPosts('');
     }

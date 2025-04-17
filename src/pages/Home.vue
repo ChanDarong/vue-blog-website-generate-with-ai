@@ -4,7 +4,7 @@
     <section class="py-12 md:py-20 bg-gradient-to-r from-red-50 to-gray-50">
       <div class="container mx-auto px-4">
         <div class="max-w-3xl mx-auto text-center">
-          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-figtree">
             Mastering Laravel Development
           </h1>
           <p class="text-xl text-gray-600 mb-8">

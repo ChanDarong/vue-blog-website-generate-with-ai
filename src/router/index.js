@@ -8,17 +8,26 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: {
+      title: 'Home'
+    }
   },
   {
     path: '/blogs',
     name: 'AllBlogs',
-    component: AllBlogs
+    component: AllBlogs,
+    meta: {
+      title: 'All Blogs'
+    }
   },
   {
     path: '/about',
     name: 'About',
-    component: About
+    component: About,
+    meta: {
+      title: 'About'
+    }
   },
   {
     path: '/blog/:slug',
@@ -33,6 +42,19 @@ const router = createRouter({
   scrollBehavior() {
     return { top: 0 };
   }
+});
+
+// Navigation guards
+router.beforeEach(async (to, from, next) => {
+  // Set document title
+  document.title = to.meta.title || import.meta.env.VITE_APP_NAME;
+
+  // Set application header if function exists
+  if (to.meta.title && typeof window.setAppHeader === 'function') {
+    window.setAppHeader(to.meta.title);
+  }
+
+  next();
 });
 
 export default router;
