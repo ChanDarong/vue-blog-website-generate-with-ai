@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <article class="container mx-auto px-4 py-8">
     <div class="max-w-3xl mb-12">
       <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ selectedCategory.name }}</h1>
       <p class="text-gray-600">
@@ -53,7 +53,7 @@
         </router-link>
       </div>
     </template>
-  </div>
+  </article>
 </template>
 
 <script setup>

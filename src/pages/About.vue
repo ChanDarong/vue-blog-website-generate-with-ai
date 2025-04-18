@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container mx-auto px-4 py-8">
     <div class="max-w-3xl mx-auto">
       <h1 class="text-3xl font-bold text-gray-800 mb-6">About Us</h1>
 
