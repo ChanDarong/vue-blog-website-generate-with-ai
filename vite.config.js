@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => {
     server: {
       proxy: {
         '/api': {
-          target: env.VITE_API_URL || 'http://localhost:3000/api/v1',
+          target: env.VITE_API_URL || 'https://laravel-blog-node-js-api.onrender.com/api/v1',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, '')
         }
