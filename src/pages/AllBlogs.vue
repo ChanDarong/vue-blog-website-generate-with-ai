@@ -12,7 +12,7 @@
         <button
           @click="filterByCategory('All')"
           class="px-4 py-2 rounded-full text-sm transition-colors cursor-pointer"
-          :class="selectedCategoryId === 'All' ? 'bg-red-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+          :class="selectedCategoryId === 'All' ? 'bg-green-700 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
         >
           All
         </button>
@@ -21,7 +21,7 @@
           :key="category.id"
           @click="filterByCategory(category.id)"
           class="px-4 py-2 rounded-full text-sm transition-colors cursor-pointer"
-          :class="selectedCategoryId === category.id ? 'bg-red-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+          :class="selectedCategoryId === category.id ? 'bg-green-700 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
         >
           {{ category.name }}
         </button>
@@ -37,7 +37,7 @@
         <p class="text-gray-500 text-lg">No articles found for the selected category.</p>
         <button
           @click="selectedCategoryId = 'All'"
-          class="mt-4 text-red-500 hover:text-red-600 font-medium"
+          class="mt-4 text-green-700 hover:text-green-700 font-medium"
         >
           View all articles
         </button>

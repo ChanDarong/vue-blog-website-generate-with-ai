@@ -1,9 +1,9 @@
 <template>
-  <header class="bg-white shadow-sm">
+  <header class="bg-white shadow-sm z-10">
     <div class="container mx-auto px-4">
       <div class="flex justify-between items-center py-4">
         <router-link to="/" class="text-2xl font-bold text-gray-800">
-          Laravel<span class="text-red-500">Dev</span>
+          Laravel<span class="text-green-700">Dev</span>
         </router-link>
 
         <nav class="hidden md:flex space-x-8">
@@ -11,8 +11,8 @@
             v-for="item in navItems"
             :key="item.path"
             :to="item.path"
-            class="text-gray-600 hover:text-red-500 transition-colors"
-            :class="{ 'text-red-500 font-medium': isActive(item.path) }"
+            class="text-gray-600 hover:text-green-700 transition-colors"
+            :class="{ 'text-green-700 font-medium': isActive(item.path) }"
           >
             {{ item.name }}
           </router-link>
@@ -30,8 +30,8 @@
           v-for="item in navItems"
           :key="item.path"
           :to="item.path"
-          class="block py-2 text-gray-600 hover:text-red-500 transition-colors"
-          :class="{ 'text-red-500 font-medium': isActive(item.path) }"
+          class="block py-2 text-gray-600 hover:text-green-700 transition-colors"
+          :class="{ 'text-green-700 font-medium': isActive(item.path) }"
           @click="mobileMenuOpen = false"
         >
           {{ item.name }}

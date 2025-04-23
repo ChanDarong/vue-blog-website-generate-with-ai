@@ -4,7 +4,7 @@
       <!-- Blog Header -->
       <div class="mb-8">
         <div class="flex items-center text-sm text-gray-500 mb-4">
-          <router-link to="/blogs" class="hover:text-red-500">← Back to all articles</router-link>
+          <router-link to="/blogs" class="hover:text-green-700">← Back to all articles</router-link>
         </div>
         <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ blog.title }}</h1>
         <div class="flex items-center">
@@ -17,37 +17,37 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Featured Image -->
       <div class="mb-8">
         <img :src="blog.image" :alt="blog.title" class="w-full h-auto rounded-lg" />
       </div>
-      
+
       <!-- Blog Content -->
       <div class="prose prose-red max-w-none">
         <p>
           Laravel is a web application framework with expressive, elegant syntax. We've already laid the foundation — freeing you to create without sweating the small things.
         </p>
-        
+
         <h2>Getting Started</h2>
         <p>
           Laravel has the most extensive and thorough documentation and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
         </p>
-        
+
         <p>
           You may also try the Laravel Bootcamp, where you will be guided through building a modern Laravel application from scratch.
         </p>
-        
+
         <h2>Laravel Ecosystem</h2>
         <p>
           Laravel's robust library of first-party tools and libraries, such as Forge, Vapor, Nova, and Envoyer help you take your projects to the next level. Pair them with powerful open source libraries like Cashier, Dusk, Echo, Horizon, Sanctum, Telescope, and more.
         </p>
-        
+
         <pre><code>// Example Laravel Route
 Route::get('/posts', function () {
     return Post::all();
 });</code></pre>
-        
+
         <h2>Key Features</h2>
         <ul>
           <li>Simple, fast routing engine</li>
@@ -58,16 +58,16 @@ Route::get('/posts', function () {
           <li>Robust background job processing</li>
           <li>Real-time event broadcasting</li>
         </ul>
-        
+
         <blockquote>
           <p>Laravel is a framework that just works. It's been thoughtfully crafted to help you create amazing applications.</p>
         </blockquote>
-        
+
         <p>
           Whether you're new to PHP web frameworks or have years of experience, Laravel is a framework that can grow with you. We'll help you take your first steps as a web developer or give you a boost as you take your expertise to the next level.
         </p>
       </div>
-      
+
       <!-- Tags -->
       <div class="mt-8 pt-6 border-t border-gray-200">
         <div class="flex flex-wrap gap-2">
@@ -76,14 +76,14 @@ Route::get('/posts', function () {
           <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">Web Development</span>
         </div>
       </div>
-      
+
       <!-- Related Posts -->
       <div class="mt-12">
         <h3 class="text-xl font-bold text-gray-800 mb-6">Related Articles</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <router-link 
-            v-for="relatedBlog in relatedBlogs" 
-            :key="relatedBlog.id" 
+          <router-link
+            v-for="relatedBlog in relatedBlogs"
+            :key="relatedBlog.id"
             :to="`/blog/${relatedBlog.id}`"
             class="block"
           >

@@ -19,7 +19,7 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: #f87171;
+  background-color: rgb(62, 138, 62);
   opacity: 0.6;
   position: absolute;
   top: 0;

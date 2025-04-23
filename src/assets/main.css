@@ -71,7 +71,7 @@
 }
 
 .prose blockquote {
-  @apply border-l-4 border-red-500 pl-4 italic text-gray-600 my-6;
+  @apply border-l-4 border-green-700 pl-4 italic text-gray-600 my-6;
 }
 
 .prose pre {
@@ -83,5 +83,5 @@
 }
 
 .prose a {
-  @apply text-red-500;
+  @apply text-green-700;
 }

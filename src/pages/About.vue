@@ -47,7 +47,7 @@
               type="text"
               id="name"
               v-model="form.name"
-              class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+              class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-700 focus:border-transparent"
               required
             />
           </div>
@@ -58,7 +58,7 @@
               type="email"
               id="email"
               v-model="form.email"
-              class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+              class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-700 focus:border-transparent"
               required
             />
           </div>
@@ -69,14 +69,14 @@
               id="message"
               v-model="form.message"
               rows="4"
-              class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+              class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-700 focus:border-transparent"
               required
             ></textarea>
           </div>
 
           <button
             type="submit"
-            class="bg-red-500 hover:bg-red-600 text-white font-medium px-6 py-3 rounded-lg transition-colors"
+            class="bg-green-700 hover:bg-green-700 text-white font-medium px-6 py-3 rounded-lg transition-colors"
           >
             Send Message
           </button>

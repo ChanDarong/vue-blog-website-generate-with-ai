@@ -9,7 +9,7 @@
         <!-- Blog Header -->
         <div class="mb-8">
           <div class="flex items-center text-sm text-gray-500 mb-4">
-            <router-link to="/blogs" class="hover:text-red-500">← Back to all articles</router-link>
+            <router-link to="/blogs" class="hover:text-green-700">← Back to all articles</router-link>
           </div>
           <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ post.title }}</h1>
           <div class="flex items-center">
