@@ -102,7 +102,6 @@ onMounted(async () => {
   try {
     await getPosts('', 1);
   } finally {
-    console.log(posts.value);
     loading.value = false;
   }
 });
