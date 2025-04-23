@@ -1,9 +1,9 @@
 <template>
-  <header class="bg-white shadow-sm z-10">
+  <header class="bg-white border-b border-gray-200 z-10">
     <div class="container mx-auto px-4">
       <div class="flex justify-between items-center py-4">
-        <router-link to="/" class="text-2xl font-bold text-gray-800">
-          Laravel<span class="text-green-700">Dev</span>
+        <router-link to="/" class="text-2xl font-bold text-black">
+          Chan<span class="text-green-700">Darong</span>
         </router-link>
 
         <nav class="hidden md:flex space-x-8">

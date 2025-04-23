@@ -1,11 +1,11 @@
 <template>
   <div class="container mx-auto px-4 py-8">
     <div class="max-w-3xl mx-auto">
-      <h1 class="text-3xl font-bold text-gray-800 mb-6">About Us</h1>
+      <h1 class="text-3xl font-bold text-black mb-6">About Us</h1>
 
       <div class="prose prose-red max-w-none">
         <p class="text-lg text-gray-600 mb-6">
-          Welcome to LaravelDev, a blog dedicated to sharing knowledge and best practices about Laravel and web development.
+          Welcome to my website, a blog dedicated to sharing knowledge and best practices about Laravel and web development.
         </p>
 
         <h2>Our Mission</h2>
@@ -39,7 +39,7 @@
       </div>
 
       <div class="mt-12 bg-white p-6 rounded-lg shadow-sm">
-        <h2 class="text-xl font-semibold text-gray-800 mb-4">Contact Us</h2>
+        <h2 class="text-xl font-semibold text-black mb-4">Contact Us</h2>
         <form @submit.prevent="submitForm" class="space-y-4">
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>

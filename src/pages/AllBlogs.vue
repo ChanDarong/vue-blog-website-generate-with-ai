@@ -1,7 +1,7 @@
 <template>
   <article class="container mx-auto px-4 py-8">
     <div class="max-w-3xl mb-12">
-      <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ selectedCategory.name }}</h1>
+      <h1 class="text-3xl font-bold text-black mb-4">{{ selectedCategory.name }}</h1>
       <p class="text-gray-600">
         {{ selectedCategory.description }}
       </p>
@@ -11,7 +11,7 @@
       <div class="flex flex-wrap gap-3">
         <button
           @click="filterByCategory('All')"
-          class="px-4 py-2 rounded-full text-sm transition-colors cursor-pointer"
+          class="px-4 py-2 text-sm transition-colors cursor-pointer"
           :class="selectedCategoryId === 'All' ? 'bg-green-700 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
         >
           All
@@ -20,7 +20,7 @@
           v-for="category in categories"
           :key="category.id"
           @click="filterByCategory(category.id)"
-          class="px-4 py-2 rounded-full text-sm transition-colors cursor-pointer"
+          class="px-4 py-2 text-sm transition-colors cursor-pointer"
           :class="selectedCategoryId === category.id ? 'bg-green-700 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
         >
           {{ category.name }}

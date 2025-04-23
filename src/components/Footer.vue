@@ -3,8 +3,8 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="mb-4 md:mb-0">
-          <div class="text-xl font-bold text-gray-800">
-            Laravel<span class="text-green-700">Dev</span>
+          <div class="text-xl font-bold text-black">
+            Chan<span class="text-green-700">Darong</span>
           </div>
           <p class="text-gray-600 mt-1">
             Sharing knowledge about Laravel and web development
@@ -31,7 +31,7 @@
       </div>
 
       <div class="mt-8 pt-6 border-t border-gray-200 text-center text-gray-500 text-sm">
-        &copy; {{ new Date().getFullYear() }} LaravelDev. All rights reserved.
+        &copy; {{ new Date().getFullYear() }} ChanDarong. All rights reserved.
       </div>
     </div>
   </footer>

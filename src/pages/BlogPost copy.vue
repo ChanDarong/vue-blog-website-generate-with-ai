@@ -6,11 +6,11 @@
         <div class="flex items-center text-sm text-gray-500 mb-4">
           <router-link to="/blogs" class="hover:text-green-700">← Back to all articles</router-link>
         </div>
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{{ blog.title }}</h1>
+        <h1 class="text-3xl md:text-4xl font-bold text-black mb-4">{{ blog.title }}</h1>
         <div class="flex items-center">
           <img :src="blog.author.avatar" :alt="blog.author.name" class="w-10 h-10 rounded-full mr-3" />
           <div>
-            <div class="text-gray-800 font-medium">{{ blog.author.name }}</div>
+            <div class="text-black font-medium">{{ blog.author.name }}</div>
             <div class="text-sm text-gray-500">
               {{ formatDate(blog.date) }} • {{ blog.readTime }} min read
             </div>
@@ -79,7 +79,7 @@ Route::get('/posts', function () {
 
       <!-- Related Posts -->
       <div class="mt-12">
-        <h3 class="text-xl font-bold text-gray-800 mb-6">Related Articles</h3>
+        <h3 class="text-xl font-bold text-black mb-6">Related Articles</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <router-link
             v-for="relatedBlog in relatedBlogs"
