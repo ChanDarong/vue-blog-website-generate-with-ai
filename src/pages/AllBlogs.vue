@@ -11,8 +11,8 @@
       <div class="flex flex-wrap gap-3">
         <button
           @click="filterByCategory('All')"
-          class="px-4 py-2 text-sm transition-colors cursor-pointer"
-          :class="selectedCategoryId === 'All' ? 'bg-green-700 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+          class="px-4 py-2 text-sm border transition-colors cursor-pointer"
+          :class="selectedCategoryId === 'All' ? 'bg-green-700 text-white border-black' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
         >
           All
         </button>
@@ -20,8 +20,8 @@
           v-for="category in categories"
           :key="category.id"
           @click="filterByCategory(category.id)"
-          class="px-4 py-2 text-sm transition-colors cursor-pointer"
-          :class="selectedCategoryId === category.id ? 'bg-green-700 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+          class="px-4 py-2 text-sm border transition-colors cursor-pointer"
+          :class="selectedCategoryId === category.id ? 'bg-green-700 text-white border-black' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
         >
           {{ category.name }}
         </button>
@@ -76,7 +76,7 @@ const selectedCategory = computed(() => {
       description: 'Browse our collection of Laravel tutorials, tips, and best practices'
     };
   }
-  return category.value || { name: 'Loading...', description: '' };
+  return category.value || { name: 'Loading...', description: 'Loading...' };
 });
 
 onMounted(async () => {

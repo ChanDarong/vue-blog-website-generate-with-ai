@@ -1,8 +1,8 @@
 <template>
-  <div class="relative group transition-transform hover:-translate-y-1.5 hover:-translate-x-1.5 h-full">
-    <span class="absolute inset-0 transition-transform translate-y-0 translate-x-0 group-hover:translate-y-1.5 group-hover:translate-x-1.5 bg-green-700">
+  <div class="relative group transition-transform h-full">
+    <span class="absolute inset-0 transition-transform translate-y-1.5 translate-x-1.5 group-hover:translate-y-0 group-hover:translate-x-0 bg-gray-300">
     </span>
-    <div class="relative bg-white border-2 shadow-sm transition-transform hover:shadow-md h-full flex flex-col">
+    <div class="relative bg-white border shadow-sm transition-transform hover:shadow-md h-full flex flex-col">
       <span class="relative flex flex-col h-full">
         <img
           :src="blog.imageUrl"
