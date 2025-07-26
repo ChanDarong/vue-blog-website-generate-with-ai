@@ -29,7 +29,16 @@
         </div>
 
         <!-- Blog Content -->
-        <div class="prose prose-red max-w-none" v-html="parsedContent"></div>
+        <div class="prose prose-red max-w-none">
+          <template v-for="(block, idx) in parsedBlocks" :key="idx">
+            <CodeBlock
+              v-if="block.type === 'code'"
+              :code="block.text"
+              :language="block.lang"
+            />
+            <div v-else v-html="marked.parser([block])"></div>
+          </template>
+        </div>
 
         <!-- Tags -->
         <div class="mt-8 pt-6 border-t border-gray-200">
@@ -64,9 +73,12 @@
 import { ref, onMounted, computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { marked } from 'marked';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/atom-one-dark.css'; // or any other theme you prefer
 import BlogCard from '../components/BlogCard.vue';
 import Spinner from '@/components/Spinner.vue';
 import usePost from '@/composables/post';
+import CodeBlock from '@/components/CodeBlock.vue';
 
 const route = useRoute();
 const blog = ref(null);
@@ -101,11 +113,10 @@ watch(
   }
 );
 
-const parsedContent = computed(() => {
-  if (!post.value || !post.value.content) return '';
-
-  // Parse markdown to HTML
-  return marked(post.value.content);
+const parsedBlocks = computed(() => {
+  if (!post.value || !post.value.content) return [];
+  const tokens = marked.lexer(post.value.content);
+  return tokens;
 });
 
 const relatedBlogs = computed(() => {

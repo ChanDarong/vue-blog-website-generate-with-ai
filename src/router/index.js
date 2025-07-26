@@ -3,11 +3,13 @@ import Home from '../pages/Home.vue';
 import AllBlogs from '../pages/AllBlogs.vue';
 import About from '../pages/About.vue';
 import BlogPost from '../pages/BlogPost.vue';
+import HomeView from '@/views/HomeView.vue';
 
 const routes = [
   {
     path: '/',
     name: 'Home',
+    // component: HomeView,
     component: Home,
     meta: {
       title: ''
