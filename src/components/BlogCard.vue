@@ -21,7 +21,7 @@
           <h3 class="text-xl font-semibold text-black mb-2">{{ blog.title }}</h3>
           <p class="text-gray-600 mb-4">{{ blog.excerpt }}</p>
           <div class="mt-auto flex items-center">
-            <img :src="blog.author.avatarUrl" :alt="blog.author.name" class="w-8 h-8 rounded-full mr-3" />
+            <img :src="blog.author.avatarUrl" :alt="blog.author.name" class="w-8 h-8 object-cover rounded-full mr-3" />
             <span class="text-sm text-gray-700">{{ blog.author.name }}</span>
           </div>
         </div>

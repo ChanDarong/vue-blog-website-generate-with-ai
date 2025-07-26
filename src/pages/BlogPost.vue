@@ -13,7 +13,7 @@
           </div>
           <h1 class="text-3xl md:text-4xl font-bold text-black mb-4">{{ post.title }}</h1>
           <div class="flex items-center">
-            <img :src="post.author.avatarUrl" :alt="post.author.name" class="w-10 h-10 rounded-full mr-3" />
+            <img :src="post.author.avatarUrl" :alt="post.author.name" class="w-10 h-10 object-cover rounded-full mr-3" />
             <div>
               <div class="text-black font-medium">{{ post.author.name }}</div>
               <div class="text-sm text-gray-500">
